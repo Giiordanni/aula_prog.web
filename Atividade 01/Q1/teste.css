@@ -1,0 +1,42 @@
+header {
+  background-color: #333;
+  color: #fff;
+  margin: 10px;
+  padding: 5px;
+  display: inline;
+  position: fixed;
+  bottom: auto;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+footer {
+  background-color: aqua;
+  color: #333;
+  display: inline;
+  margin: 10px;
+  padding: 5px;
+  Position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+
+main {
+    padding-top: 50px; /* Ajuste conforme a altura do seu header */
+  }
+
+
+main p{
+    display: inline-block;
+    background-color: #f0f0f0f0;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin:10px;
+    padding: 5px 10px;
+    
+}
