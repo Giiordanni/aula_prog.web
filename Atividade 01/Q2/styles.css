@@ -1,0 +1,39 @@
+
+nav {
+    text-align: center;
+    background-color: #333;
+    padding: 10px 0;
+  }
+  
+  nav a {
+    display: inline-block;
+    width: 20vw;
+    padding: 10px;
+    margin: 0 1vw; /* Espaço entre os links */
+    color: #fff;
+    text-decoration: none;
+    background-color: #555;
+    border-radius: 10px;
+  }
+  
+  nav a:hover {
+    background-color: #777;
+  }
+  
+  section {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .box {
+    display: inline-block;
+    width: 45%;
+    margin: 0 2.5%; /* Espaço entre as caixas de texto */
+    padding: 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+  }
