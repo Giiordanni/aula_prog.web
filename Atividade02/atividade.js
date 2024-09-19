@@ -6,19 +6,29 @@ const cidade = document.querySelector(".cidade");
 const uf = document.querySelector(".uf");
 const menssagemErro = document.querySelector(".mens_erro");
 
+const cepTamanho = (cep) => (cep.length === 8 ? true : false);
+
 btnElement.addEventListener("click", async () => {
-  const cepRequisicao = document.querySelector(".cepRequisicao").value;
-
-  if (cepRequisicao.length !== 8) {
-    throw new Error("Tamanho do cep fornecido inválido. Deve conter 8 dígitos");
-    return; //impedir a requisição de continuar
+  const cepRequisicao = document.querySelector(".cepRequisicao").value.trim(); // trim para ignorar os espaços em branco
+  if (!cepTamanho(cepRequisicao)) {
+    cep.innerHTML = "";
+    logradouro.innerHTML = "";
+    bairro.innerHTML = "";
+    cidade.innerHTML = "";
+    uf.innerHTML = "";
+    menssagemErro.innerHTML = "O CEP deve ter 8 dígitos!";
+    return; // fazer o porgrama parar e não continuar
   }
-  try {
-    const response = await fetch(
-      `https://viacep.com.br/ws/${cepRequisicao}/json/`
-    );
 
+  try {
+    const url = `https://viacep.com.br/ws/${cepRequisicao}/json/`;
+    const response = await fetch(url);
     const data = await response.json();
+
+    if (data.erro) {
+      throw new Error("CEP não encontrado!");
+    }
+
     cep.innerHTML = data.cep;
     logradouro.innerHTML = data.logradouro;
     bairro.innerHTML = data.bairro;
@@ -31,6 +41,6 @@ btnElement.addEventListener("click", async () => {
     bairro.innerHTML = "";
     cidade.innerHTML = "";
     uf.innerHTML = "";
-    menssagemErro.innerHTML = "CEP inválido";
+    menssagemErro.innerHTML = "CEP inválido ou não encontrado!";
   }
 });
