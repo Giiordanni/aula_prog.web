@@ -98,5 +98,17 @@ app.get("/animes/:id", (req, res) => {
     return res.status(200).json(animes.find((anime) => anime.id === id));
 });
 
+app.delete("/animes/:id", (req, res) => {
+   const [id] = req.params;
+   const animeId = animes.findIndex(animes => animes.id === id);
+   if (animeId !== -1){
+    animes.splice(animeId, 1);
+    logger.info('DELETE /animes/:id', { id });
+    return res.status(200).json({message: "Anime deletado com sucesso."});
+   }
+   logger.error("Anime não encontrado.");
+    return res.status(404).json({error: "Anime não encontrado."});
+});
+
 export default app;
 
